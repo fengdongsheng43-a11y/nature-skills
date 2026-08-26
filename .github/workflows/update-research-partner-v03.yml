@@ -1,0 +1,106 @@
+name: Update research partner v0.3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-research-partner-v03.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Patch nature-research-partner to v0.3
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('.')
+          skill = root / 'skills/nature-research-partner/SKILL.md'
+          manifest = root / 'skills/nature-research-partner/manifest.yaml'
+          coord = root / 'skills/nature-research-partner/references/literature-coordinate-system.md'
+          readme = root / 'skills/nature-research-partner/README.md'
+          readme_en = root / 'skills/nature-research-partner/README_EN.md'
+
+          s = skill.read_text(encoding='utf-8')
+          s = s.replace(
+              'identify the dominant contradiction or failure mode, clarify a searchable scientific question, run a mandatory literature-evidence gate, build a five-anchor literature coordinate system,\n  generate rival hypotheses,',
+              'identify the dominant contradiction or failure mode, clarify a searchable scientific question, run a mandatory literature-evidence gate, build a five-anchor literature coordinate system,\n  reconstruct recurring unresolved problems across independent studies, identify why they remain unsolved and whether they are tractable, generate rival hypotheses,'
+          )
+          s = s.replace(
+              '| `explore` | The user has a sudden idea, partial observation, anomaly, or vague direction | Ask focused Socratic questions, formalize the system, reconstruct a searchable scientific contradiction, then pass the literature-evidence gate and discuss the evidence brief before strengthening the idea |',
+              '| `explore` | The user has a sudden idea, partial observation, anomaly, or vague direction | Ask focused Socratic questions, formalize the system, reconstruct a searchable scientific contradiction, pass the literature-evidence gate, reconstruct recurring unresolved bottlenecks across studies, and discuss the evidence before strengthening the idea |'
+          )
+          s = s.replace(
+              'In an interactive `explore` workflow, normally discuss this brief with the user before Stage 4–6.',
+              'In an interactive `explore` workflow, normally discuss this brief with the user before Stage 3.5–6.'
+          )
+          marker = '### Stage 4. Construct mechanisms and rival hypotheses\n'
+          if marker not in s:
+              raise SystemExit('Stage 4 marker not found')
+          insert = '''### Stage 3.5. Reconstruct recurring unresolved problems\n\nDo not treat the literature stage as complete merely because anchor papers and a nominal gap have been found. Before strengthening the user's preferred mechanism, determine whether the literature converges on one or more scientifically persistent problems.\n\nSearch across multiple independent studies for problems that recur despite different materials, laboratories, methods, or application contexts. Distinguish:\n\n- `author-stated gap` — a limitation or future-work statement made by one paper;\n- `cross-study recurring problem` — the same unresolved phenomenon or limitation appears across independent studies;\n- `mechanistically persistent bottleneck` — the problem persists because current theory, measurement, identifiability, process control, or experimental architecture cannot distinguish the governing causes.\n\nA candidate research problem should be evaluated as:\n\n`G = Recurring ∩ Unresolved ∩ Important ∩ Tractable`.\n\nWhere:\n\n- `Recurring` — supported by convergence across independent studies, not a single paper's rhetoric;\n- `Unresolved` — current SOTA still does not provide a reliable solution or causal explanation within the documented search boundary;\n- `Important` — resolving it would change mechanism understanding, design rules, prediction, or a consequential application decision;\n- `Tractable` — the project can test the key uncertainty with feasible experiments, measurements, or analysis.\n\nFor each candidate unresolved problem, reconstruct:\n\n1. the recurring observation or failure;\n2. which independent studies report or imply it;\n3. what explanations or solutions have already been attempted;\n4. what remains unresolved after those attempts;\n5. the deepest currently plausible reason it remains unresolved;\n6. whether the obstacle is thermodynamic, kinetic, transport, interfacial, biological, measurement, identifiability, scale, or resource-related;\n7. the evidence that the problem still persists at the current search date;\n8. the leverage point the present project could uniquely test;\n9. a death condition showing that the problem is not actually controlling the target outcome.\n\nDo not infer importance from frequency alone, and do not infer novelty from absence alone. A problem can be widely mentioned yet scientifically weak, or important but currently intractable. Downgrade accordingly.\n\nClassify each candidate as `established unresolved bottleneck`, `probable unresolved problem`, or `candidate gap`. Only the first two should normally drive a major research program without additional searching.\n\nIn interactive `explore` mode, discuss the reconstructed unresolved-problem map with the user before Stage 4. The discussion should decide which bottleneck is worth owning, which should be treated as a boundary condition, and which should be abandoned.\n\nLoad `references/unresolved-problem-reconstruction.md` for the full protocol and use `templates/unresolved-problem-map.md` when a persistent project record is needed.\n\n'''
+          s = s.replace(marker, insert + marker)
+          skill.write_text(s, encoding='utf-8')
+
+          m = manifest.read_text(encoding='utf-8')
+          m = m.replace('version: 0.2.0', 'version: 0.3.0')
+          m = m.replace(
+              '  builds a five-anchor literature coordinate system, maintains rival hypotheses, runs novelty\n',
+              '  builds a five-anchor literature coordinate system, reconstructs recurring unresolved bottlenecks, maintains rival hypotheses, runs novelty\n'
+          )
+          ref_anchor = '    - condition: generating competing mechanisms, checking physical-chemical-biological constraints, or deriving discriminating predictions\n      path: references/mechanism-and-rival-reasoning.md\n'
+          ref_new = '    - condition: multiple studies mention limitations, unresolved gaps, recurring failures, or the project needs to determine which persistent bottleneck is scientifically important and tractable\n      path: references/unresolved-problem-reconstruction.md\n'
+          if ref_new not in m:
+              m = m.replace(ref_anchor, ref_new + ref_anchor)
+          tmpl_anchor = '    - condition: recording the five-anchor literature coordinate system\n      path: templates/literature-coordinate.md\n'
+          tmpl_new = '    - condition: recording recurring unresolved problems, their cross-study evidence, root causes, tractability, leverage points, and death conditions\n      path: templates/unresolved-problem-map.md\n'
+          if tmpl_new not in m:
+              m = m.replace(tmpl_anchor, tmpl_anchor + tmpl_new)
+          manifest.write_text(m, encoding='utf-8')
+
+          c = coord.read_text(encoding='utf-8')
+          add_marker = '## When anchors are hard to find\n'
+          add = '''## Mandatory handoff to unresolved-problem reconstruction\n\nThe literature gate does not end at the five-anchor coordinate. Before mechanism strengthening in an exploratory discovery task, use the collected literature to test whether the field contains a recurring unresolved bottleneck rather than a one-paper gap.\n\nThe handoff must identify candidate recurring problems, the independent studies supporting each problem, attempted solutions, why those attempts remain insufficient, and whether the problem is both important and tractable. Use `unresolved-problem-reconstruction.md` for this stage.\n\nDo not proceed merely because several papers contain phrases such as “remains unclear” or “future work is needed.” Convergence must be reconstructed from the actual evidence and current SOTA.\n\n'''
+          if '## Mandatory handoff to unresolved-problem reconstruction' not in c:
+              c = c.replace(add_marker, add + add_marker)
+          coord.write_text(c, encoding='utf-8')
+
+          ref = root / 'skills/nature-research-partner/references/unresolved-problem-reconstruction.md'
+          ref.write_text('''# Unresolved problem reconstruction\n\n## Purpose\n\nTurn literature retrieval into scientific problem discovery. The aim is not to collect statements that a topic is “underexplored,” but to identify problems that recur across independent studies, remain unresolved at the current search boundary, matter scientifically, and can be attacked by the present project.\n\n## Three evidence levels\n\n### 1. Author-stated gap\nA single paper states a limitation, unknown, or future direction. Record it, but do not promote it to a field gap without independent convergence.\n\n### 2. Cross-study recurring problem\nIndependent groups report the same unexplained phenomenon, performance limitation, contradictory result, or inability to control/predict an outcome. This is stronger than repeated wording in reviews.\n\n### 3. Mechanistically persistent bottleneck\nThe recurring problem can be traced to a deeper obstacle such as non-identifiable mechanisms, coupled variables, missing measurements, unresolved thermodynamic-versus-kinetic control, scale dependence, hidden transport limitations, biological feedback, or an experimental design that cannot distinguish competing causes.\n\n## Qualification rule\n\nUse the intersection:\n\n`G = R ∩ U ∩ I ∩ T`\n\n- `R — Recurring`: more than one independent research group encounters the problem.\n- `U — Unresolved`: the latest credible SOTA still lacks a robust solution or explanation within the documented search boundary.\n- `I — Important`: solving it changes mechanism understanding, design rules, prediction, or a meaningful decision.\n- `T — Tractable`: decisive tests are feasible with available or realistically accessible resources.\n\nDo not manufacture numeric scores unless criteria are calibrated. Use structured judgments with evidence pointers.\n\n## Search protocol\n\nFor each candidate problem, search in at least four directions when relevant:\n\n1. direct target-system studies reporting the phenomenon or limitation;\n2. recent SOTA studies claiming to solve or control it;\n3. reviews/perspectives summarizing why it remains difficult;\n4. contradictory or adjacent-system studies that may dissolve the apparent gap.\n\nPrefer convergence across independent groups. Repeated papers from one group count as a research program, not independent confirmation.\n\n## Root-cause decomposition\n\nFor each recurring problem, ask sequentially:\n\n1. Is the apparent problem real, or a measurement/definition artifact?\n2. Is it caused by thermodynamic feasibility or phase/speciation constraints?\n3. Is equilibrium inaccessible because kinetics or nucleation barriers dominate?\n4. Are mass transfer, diffusion, pore structure, or interface accessibility controlling?\n5. Are multiple variables coupled so the effect is not identifiable?\n6. Does biological regulation or feedback change the boundary conditions?\n7. Does the field measure only endpoints when the missing information is pathway-resolved?\n8. Is the obstacle principally scale, heterogeneity, cost, instrumentation, or reproducibility rather than mechanism?\n\nDo not force this order when irrelevant; it is a fault-isolation scaffold.\n\n## Problem card\n\nRecord:\n\n- `Problem ID`\n- `Recurring observation/failure`\n- `Independent evidence`\n- `Current SOTA / attempted solutions`\n- `What remains unresolved`\n- `Root-cause candidates`\n- `Why previous approaches cannot resolve it`\n- `Importance if solved`\n- `Tractability for this project`\n- `Candidate leverage point`\n- `Death condition`\n- `Status`\n\nAllowed status:\n\n- `established unresolved bottleneck`\n- `probable unresolved problem`\n- `candidate gap`\n- `resolved / not a gap`\n- `important but currently intractable`\n- `low-value gap`\n\n## Decision rule\n\nA major project should normally be built around a problem that is both persistent and discriminable. Prefer a bottleneck where one or a small number of experiments can distinguish why prior work fails.\n\nDo not select a problem simply because it can be published. Select it because resolving its uncertainty would change what the field should believe or do.\n''', encoding='utf-8')
+
+          tmpl = root / 'skills/nature-research-partner/templates/unresolved-problem-map.md'
+          tmpl.write_text('''# Unresolved Problem Map\n\n- Search date:\n- Search boundary:\n- Target system:\n- Scientific contradiction:\n\n| ID | Recurring observation/failure | Independent evidence | Current SOTA / attempted solutions | What remains unresolved | Root-cause candidates | Why unresolved | Importance | Tractability | Candidate leverage point | Death condition | Status |\n|---|---|---|---|---|---|---|---|---|---|---|---|\n| P1 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | candidate gap |\n\n## Convergence summary\n\n- Strongest established bottleneck:\n- Strongest counterargument:\n- Problem most worth owning:\n- Important but intractable problem:\n- Low-value or resolved gaps to avoid:\n- Next literature search needed:\n- Next discussion questions:\n''', encoding='utf-8')
+
+          for p in (readme, readme_en):
+              t = p.read_text(encoding='utf-8')
+              if p.name == 'README.md':
+                  old = '通过强制文献证据门建立机制、SOTA、方法证据、反证和发表坐标，再进入竞争假设、创新性反证和实验设计。'
+                  new = '通过强制文献证据门建立机制、SOTA、方法证据、反证和发表坐标，并从多篇独立研究中重构仍未解决且可攻克的持续性科学瓶颈，再进入竞争假设、创新性反证和实验设计。'
+              else:
+                  old = 'It uses a mandatory literature-evidence gate before mechanism strengthening, novelty assessment, or publication-level design.'
+                  new = 'It uses a mandatory literature-evidence gate and reconstructs recurring unresolved bottlenecks across independent studies before mechanism strengthening, novelty assessment, or publication-level design.'
+              if old in t:
+                  t = t.replace(old, new)
+              p.write_text(t, encoding='utf-8')
+          PY
+      - name: Validate repository
+        run: |
+          python -m pip install --quiet pyyaml
+          python scripts/validate-skill-metadata.py
+          python scripts/validate-readmes.py
+      - name: Commit v0.3 update and remove temporary workflow
+        shell: bash
+        run: |
+          rm .github/workflows/update-research-partner-v03.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: add unresolved problem reconstruction gate"
+          git push
