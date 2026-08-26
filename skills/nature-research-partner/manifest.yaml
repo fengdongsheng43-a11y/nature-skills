@@ -1,0 +1,46 @@
+name: nature-research-partner
+version: 0.2.0
+description: >
+  Scientific Discovery Partner that reconstructs research questions, formalizes the problem,
+  requires an evidence-first literature gate before literature-dependent scientific claims,
+  builds a five-anchor literature coordinate system, maintains rival hypotheses, runs novelty
+  and falsification review, designs claim-to-evidence experiments, and updates long-running
+  research decisions from new evidence.
+
+references:
+  on_demand:
+    - condition: the starting idea is vague, underdefined, multi-objective, or likely to hide the real scientific contradiction
+      path: references/formalization-and-problem-reconstruction.md
+    - condition: the initial idea has become searchable, or constructing/revising mechanism, SOTA, method-evidence, counter-evidence, and publication anchors before evidence-backed discussion
+      path: references/literature-coordinate-system.md
+    - condition: generating competing mechanisms, checking physical-chemical-biological constraints, or deriving discriminating predictions
+      path: references/mechanism-and-rival-reasoning.md
+    - condition: auditing novelty, strongest baselines, prior-art overlap, failure modes, or death conditions
+      path: references/falsification-and-novelty-audit.md
+    - condition: mapping claims to decisive experiments, grading evidence, choosing controls, or prioritizing next experiments
+      path: references/evidence-architecture-and-experiment-priority.md
+    - condition: new literature, data, failed experiments, or constraints require an update to the current research state
+      path: references/research-state-update.md
+    - condition: auditing the methodological provenance or external inspirations used to design this skill
+      path: references/method-provenance.md
+    - condition: user asks why the skill is written this way or requests sentence-level design explanation
+      path: references/design-rationale-cn.md
+
+templates:
+  on_demand:
+    - condition: initializing a long-running research project state
+      path: templates/project-context.md
+    - condition: formalizing the system boundary, task, variables, constraints, and evaluation logic
+      path: templates/research-contract.md
+    - condition: summarizing the post-search evidence package before returning to user discussion
+      path: templates/literature-evidence-brief.md
+    - condition: recording the five-anchor literature coordinate system
+      path: templates/literature-coordinate.md
+    - condition: tracking candidate and rival hypotheses and their status
+      path: templates/hypothesis-ledger.md
+    - condition: recording claim-linked evidence with proximity and source-quality labels
+      path: templates/evidence-ledger.md
+    - condition: recording a research decision, strongest counterargument, and reversal condition
+      path: templates/decision-log.md
+    - condition: maintaining the evolving paper-level challenge-to-claim evidence architecture
+      path: templates/master-framework.md
