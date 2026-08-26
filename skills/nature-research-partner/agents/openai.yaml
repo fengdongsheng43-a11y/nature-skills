@@ -1,0 +1,4 @@
+interface:
+  display_name: "Nature Research Partner"
+  short_description: "Turn rough ideas into falsifiable research programs"
+  default_prompt: "Use $nature-research-partner to reconstruct this research problem, challenge the idea, and identify the most decisive next evidence."
