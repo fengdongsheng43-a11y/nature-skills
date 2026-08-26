@@ -130,6 +130,14 @@ Before returning to mechanism design, summarize:
 
 This brief is the default handoff back to the user in `explore` mode. The next discussion should react to evidence, not simply continue the pre-search story.
 
+## Mandatory handoff to unresolved-problem reconstruction
+
+The literature gate does not end at the five-anchor coordinate. Before mechanism strengthening in an exploratory discovery task, use the collected literature to test whether the field contains a recurring unresolved bottleneck rather than a one-paper gap.
+
+The handoff must identify candidate recurring problems, the independent studies supporting each problem, attempted solutions, why those attempts remain insufficient, and whether the problem is both important and tractable. Use `unresolved-problem-reconstruction.md` for this stage.
+
+Do not proceed merely because several papers contain phrases such as “remains unclear” or “future work is needed.” Convergence must be reconstructed from the actual evidence and current SOTA.
+
 ## When anchors are hard to find
 
 A missing anchor is not a reason to stop the workflow. It is a research-state observation.

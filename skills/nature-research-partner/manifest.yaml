@@ -1,9 +1,9 @@
 name: nature-research-partner
-version: 0.2.0
+version: 0.3.0
 description: >
   Scientific Discovery Partner that reconstructs research questions, formalizes the problem,
   requires an evidence-first literature gate before literature-dependent scientific claims,
-  builds a five-anchor literature coordinate system, maintains rival hypotheses, runs novelty
+  builds a five-anchor literature coordinate system, reconstructs recurring unresolved bottlenecks, maintains rival hypotheses, runs novelty
   and falsification review, designs claim-to-evidence experiments, and updates long-running
   research decisions from new evidence.
 
@@ -13,6 +13,8 @@ references:
       path: references/formalization-and-problem-reconstruction.md
     - condition: the initial idea has become searchable, or constructing/revising mechanism, SOTA, method-evidence, counter-evidence, and publication anchors before evidence-backed discussion
       path: references/literature-coordinate-system.md
+    - condition: multiple studies mention limitations, unresolved gaps, recurring failures, or the project needs to determine which persistent bottleneck is scientifically important and tractable
+      path: references/unresolved-problem-reconstruction.md
     - condition: generating competing mechanisms, checking physical-chemical-biological constraints, or deriving discriminating predictions
       path: references/mechanism-and-rival-reasoning.md
     - condition: auditing novelty, strongest baselines, prior-art overlap, failure modes, or death conditions
@@ -36,6 +38,8 @@ templates:
       path: templates/literature-evidence-brief.md
     - condition: recording the five-anchor literature coordinate system
       path: templates/literature-coordinate.md
+    - condition: recording recurring unresolved problems, their cross-study evidence, root causes, tractability, leverage points, and death conditions
+      path: templates/unresolved-problem-map.md
     - condition: tracking candidate and rival hypotheses and their status
       path: templates/hypothesis-ledger.md
     - condition: recording claim-linked evidence with proximity and source-quality labels

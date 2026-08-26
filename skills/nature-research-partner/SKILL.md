@@ -5,7 +5,7 @@ description: >-
   or immature project concepts into falsifiable, literature-traceable, evidence-designed research programs.
   Use when the user wants to explore a research idea, reconstruct a scientific question, formalize a task,
   identify the dominant contradiction or failure mode, clarify a searchable scientific question, run a mandatory literature-evidence gate, build a five-anchor literature coordinate system,
-  generate rival hypotheses, stress-test novelty, define falsification conditions, prioritize decisive experiments,
+  reconstruct recurring unresolved problems across independent studies, identify why they remain unsolved and whether they are tractable, generate rival hypotheses, stress-test novelty, define falsification conditions, prioritize decisive experiments,
   update beliefs from new data, or maintain a long-running research decision record. This is a research-partner
   and scientific-reasoning skill, not merely a writing, literature-summary, or brainstorming prompt.
 ---
@@ -39,7 +39,7 @@ Choose the lightest mode that can answer the research need. Do not run the full 
 
 | Mode | Use when | Default behavior |
 |---|---|---|
-| `explore` | The user has a sudden idea, partial observation, anomaly, or vague direction | Ask focused Socratic questions, formalize the system, reconstruct a searchable scientific contradiction, then pass the literature-evidence gate and discuss the evidence brief before strengthening the idea |
+| `explore` | The user has a sudden idea, partial observation, anomaly, or vague direction | Ask focused Socratic questions, formalize the system, reconstruct a searchable scientific contradiction, pass the literature-evidence gate, reconstruct recurring unresolved bottlenecks across studies, and discuss the evidence before strengthening the idea |
 | `challenge` | A candidate mechanism, novelty claim, or project concept already exists | Attack the idea using rivals, baselines, prior art, confounders, boundary conditions, and death conditions |
 | `design` | The scientific question and main candidate mechanisms are sufficiently clear | Build the claim-to-evidence architecture and prioritize decisive, executable experiments |
 | `update` | New literature, data, failed experiments, or constraints arrive | Freeze the new observation, update hypothesis status and evidence strength, revise decisions, and choose the next information-rich action |
@@ -163,9 +163,50 @@ The literature gate is not passed merely because papers were found. Before movin
 - which parts of the user's initial framing should be retained, weakened, split, or abandoned;
 - the next questions that now matter because of the evidence.
 
-In an interactive `explore` workflow, normally discuss this brief with the user before Stage 4–6. If the user requested an immediate end-to-end answer, continue without forcing a pause, but preserve the same evidence gate and clearly mark unresolved literature gaps.
+In an interactive `explore` workflow, normally discuss this brief with the user before Stage 3.5–6. If the user requested an immediate end-to-end answer, continue without forcing a pause, but preserve the same evidence gate and clearly mark unresolved literature gaps.
 
 Load `references/literature-coordinate-system.md` when executing this gate.
+
+### Stage 3.5. Reconstruct recurring unresolved problems
+
+Do not treat the literature stage as complete merely because anchor papers and a nominal gap have been found. Before strengthening the user's preferred mechanism, determine whether the literature converges on one or more scientifically persistent problems.
+
+Search across multiple independent studies for problems that recur despite different materials, laboratories, methods, or application contexts. Distinguish:
+
+- `author-stated gap` — a limitation or future-work statement made by one paper;
+- `cross-study recurring problem` — the same unresolved phenomenon or limitation appears across independent studies;
+- `mechanistically persistent bottleneck` — the problem persists because current theory, measurement, identifiability, process control, or experimental architecture cannot distinguish the governing causes.
+
+A candidate research problem should be evaluated as:
+
+`G = Recurring ∩ Unresolved ∩ Important ∩ Tractable`.
+
+Where:
+
+- `Recurring` — supported by convergence across independent studies, not a single paper's rhetoric;
+- `Unresolved` — current SOTA still does not provide a reliable solution or causal explanation within the documented search boundary;
+- `Important` — resolving it would change mechanism understanding, design rules, prediction, or a consequential application decision;
+- `Tractable` — the project can test the key uncertainty with feasible experiments, measurements, or analysis.
+
+For each candidate unresolved problem, reconstruct:
+
+1. the recurring observation or failure;
+2. which independent studies report or imply it;
+3. what explanations or solutions have already been attempted;
+4. what remains unresolved after those attempts;
+5. the deepest currently plausible reason it remains unresolved;
+6. whether the obstacle is thermodynamic, kinetic, transport, interfacial, biological, measurement, identifiability, scale, or resource-related;
+7. the evidence that the problem still persists at the current search date;
+8. the leverage point the present project could uniquely test;
+9. a death condition showing that the problem is not actually controlling the target outcome.
+
+Do not infer importance from frequency alone, and do not infer novelty from absence alone. A problem can be widely mentioned yet scientifically weak, or important but currently intractable. Downgrade accordingly.
+
+Classify each candidate as `established unresolved bottleneck`, `probable unresolved problem`, or `candidate gap`. Only the first two should normally drive a major research program without additional searching.
+
+In interactive `explore` mode, discuss the reconstructed unresolved-problem map with the user before Stage 4. The discussion should decide which bottleneck is worth owning, which should be treated as a boundary condition, and which should be abandoned.
+
+Load `references/unresolved-problem-reconstruction.md` for the full protocol and use `templates/unresolved-problem-map.md` when a persistent project record is needed.
 
 ### Stage 4. Construct mechanisms and rival hypotheses
 
