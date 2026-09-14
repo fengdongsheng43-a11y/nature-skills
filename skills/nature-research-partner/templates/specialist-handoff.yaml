@@ -1,0 +1,27 @@
+project_id: UNKNOWN
+task_id: UNKNOWN
+decision_or_claim_id: UNKNOWN
+scientific_question: UNKNOWN
+hypothesis_contrast: []
+requested_execution: UNKNOWN
+required_inputs: []
+required_outputs: []
+evidence_boundary: UNKNOWN
+must_not_infer: []
+validation_required: []
+return_to: nature-research-partner
+specialist_return:
+  executed: UNKNOWN
+  source_inputs: []
+  direct_result: UNKNOWN
+  uncertainty: UNKNOWN
+  assumptions_checked: []
+  validation_performed: []
+  informs: []
+  supports: []
+  contradicts: []
+  unresolved: []
+  limitations: []
+  candidate_evidence_grade: UNKNOWN
+  evidence_grade_reason: UNKNOWN
+  decision_impact: UNKNOWN
