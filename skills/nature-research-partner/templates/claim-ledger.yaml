@@ -1,0 +1,23 @@
+project_id: UNKNOWN
+research_state_id: UNKNOWN
+updated_on: UNKNOWN
+claims:
+  - id: C01
+    statement: UNKNOWN
+    claim_type: mechanism
+    status: proposed
+    system_boundary: UNKNOWN
+    hypothesis_links:
+      supports: []
+      rivals: []
+    evidence:
+      direct: []
+      indirect: []
+    required_evidence: []
+    death_conditions: []
+    allowed_wording_current: []
+    forbidden_wording_current: []
+    upgrade_requirements: []
+    next_decisive_test: UNKNOWN
+    decision_impact: UNKNOWN
+    notes: UNKNOWN
