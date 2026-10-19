@@ -458,6 +458,8 @@ OpenClaw、OpenCode、Hermes 的具体接入方式见 [OpenClaw / OpenCode / Her
 | [`nature-literature-pipeline`](skills/nature-literature-pipeline/README.md) | Stable | 自动化文献发现管线：多源检索、六维评分、精读推送和本地归档 | “literature pipeline”, “每日文献”, “文献推送”, “daily literature push”, “cron” | [详情](skills/nature-literature-pipeline/README.md) |
 | [`nature-experiment-log`](skills/nature-experiment-log/README.md) | Draft | 标准化记录实验图片、语音和文字材料，生成带 YAML frontmatter 的 Obsidian 实验日志并归档原始材料 | “实验日志”, “记录实验”, “experiment log”, “Obsidian vault”, “飞书科研群” | [详情](skills/nature-experiment-log/README.md) |
 | [`nature-proposal-writer`](skills/nature-proposal-writer/README.md) | Beta | proposal-first 科研写作状态机，先建立证据、论证和章节契约，再起草或审查文本 | “researchwrite”, “proposal”, “开题报告”, “研究方案”, “科研写作 QA” | [详情](skills/nature-proposal-writer/README.md) |
+| [`nature-nsfc-proposal`](skills/nature-nsfc-proposal/README.md) | Draft | 国自然年度政策、可证伪科学问题、申请书论证与评审门槛 | “国自然”, “NSFC”, “地区科学基金”, “国自然申请” | [详情](skills/nature-nsfc-proposal/README.md) |
+| [`nature-provincial-fund-proposal`](skills/nature-provincial-fund-proposal/README.md) | Draft | 省/自治区自然基金申报适配、区域科学问题、地方项目资格/限额及P0实验 | “省自然”, “区自然”, “内蒙古自然科学基金”, “博士研究生项目” | [详情](skills/nature-provincial-fund-proposal/README.md) |
 | [`nature-research-partner`](skills/nature-research-partner/README.md) | Draft | 科研发现搭档：把片面灵感、异常现象和未成熟方向重构为可证伪、可追溯、可实验验证并持续更新的论文级科学问题 | “research partner”, “科研搭档”, “科学问题重构”, “竞争假设”, “反证审查”, “证据化设计” | [详情](skills/nature-research-partner/README.md) |
 
 ## 7. 贡献与开发
