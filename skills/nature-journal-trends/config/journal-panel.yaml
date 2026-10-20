@@ -1,0 +1,72 @@
+# Initial journal panel for environmental science and single-atom materials
+panel_id: environmental-water-materials-v1
+status: approved-core-panel
+retrieval_asof: "2026-10-20"
+owner_repo: fengdongsheng43-a11y/nature-skills
+scientific_decision_skill: skills/nature-research-partner/SKILL.md
+primary_time_window:
+  mode: rolling-36-months
+  start_date: "2023-10-20"
+  end_date: "2026-10-20"
+  date_field: first_verified_online_publication_date
+  comparisons:
+    - matched-calendar-year-to-date
+    - completed-calendar-years
+    - rolling-six-month-subwindows
+primary_document_type: original_research
+separate_types:
+  - reviews
+  - editorials
+  - perspectives
+  - news_and_views
+  - corrections
+  - themed_collection
+journals:
+  - key: nature-water
+    name: Nature Water
+    publisher: Springer Nature
+    issn_online: "2731-6084"
+    focus: cross_scale_water_problem_and_system_level_consequences
+    official: https://www.nature.com/natwater/aims
+  - key: est
+    name: Environmental Science & Technology
+    publisher: American Chemical Society
+    issn_print: "0013-936X"
+    issn_online: "1520-5851"
+    focus: environmental_fate_process_mechanism_and_relevance
+    official: https://pubs.acs.org/esthag/pages/About
+  - key: water-research
+    name: Water Research
+    publisher: Elsevier
+    issn_print: "0043-1354"
+    focus: engineered_and_natural_water_systems_process_and_validation
+    official: https://shop.elsevier.com/journals/water-research/0043-1354
+  - key: afm
+    name: Advanced Functional Materials
+    publisher: Wiley
+    issn_print: "1616-301X"
+    issn_online: "1616-3028"
+    focus: materials_site_structure_property_function
+    official: https://advanced.onlinelibrary.wiley.com/hub/journal/16163028/productinformation.html
+analytical_tracks:
+  - key: journal-wide
+    description: Entire original research corpus of each journal; topic and evidence pattern evolution
+    allowed_claims: audited_per_journal_publication_patterns
+  - key: sac-water
+    description: Cross-journal original research directly relevant to single-atom catalysis and water treatment
+    themes:
+      - metal_atom_coordination_and_support
+      - single_atom_cluster_and_multisite_synergy
+      - persulfate_pms_paa_ozone_and_oxidant_free_reactions
+      - reaction_pathway_identification_and_rival_mechanisms
+      - contaminant_selectivity_and_transformation_products
+      - matrix_robustness_leaching_stability
+      - membranes_continuous_flow_scale_up
+      - data_driven_rational_design
+    denominators:
+      - share_of_all_original_research_in_journal
+      - share_of_environmental_catalysis_or_water_related_subset_if_auditable
+    warning: Avoid cross-journal raw counts as size-normalized prevalence
+full_corpus_state: NOT_YET_RETRIEVED
+full_corpus_claims: PROHIBITED
+pilot_case_studies: reports/2026-10-20-sac-water-pilot.md
