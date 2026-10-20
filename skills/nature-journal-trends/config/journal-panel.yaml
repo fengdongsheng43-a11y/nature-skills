@@ -1,6 +1,6 @@
 # Initial journal panel for environmental science and single-atom materials
-panel_id: environmental-water-materials-v1
-status: approved-core-panel
+panel_id: wr-est-core-afm-method-reference-v2
+status: current-active-panel
 retrieval_asof: "2026-10-20"
 owner_repo: fengdongsheng43-a11y/nature-skills
 scientific_decision_skill: skills/nature-research-partner/SKILL.md
@@ -22,12 +22,7 @@ separate_types:
   - corrections
   - themed_collection
 journals:
-  - key: nature-water
-    name: Nature Water
-    publisher: Springer Nature
-    issn_online: "2731-6084"
-    focus: cross_scale_water_problem_and_system_level_consequences
-    official: https://www.nature.com/natwater/aims
+  # Nature Water is intentionally excluded from current analyses; not deleted from history.
   - key: est
     name: Environmental Science & Technology
     publisher: American Chemical Society
@@ -50,10 +45,10 @@ journals:
     official: https://advanced.onlinelibrary.wiley.com/hub/journal/16163028/productinformation.html
 analytical_tracks:
   - key: journal-wide
-    description: Entire original research corpus of each journal; topic and evidence pattern evolution
+    description: Entire original research corpus of WR and ES&T only; topic and evidence pattern evolution
     allowed_claims: audited_per_journal_publication_patterns
   - key: sac-water
-    description: Cross-journal original research directly relevant to single-atom catalysis and water treatment
+    description: Materials case studies only in AFM; no assumption that SAC is the project priority
     themes:
       - metal_atom_coordination_and_support
       - single_atom_cluster_and_multisite_synergy
@@ -70,3 +65,16 @@ analytical_tracks:
 full_corpus_state: NOT_YET_RETRIEVED
 full_corpus_claims: PROHIBITED
 pilot_case_studies: reports/2026-10-20-sac-water-pilot.md
+
+comparison_design:
+  primary_journals:
+    - water-research
+    - est
+  method_reference_journal: afm
+  nature_water_excluded: true
+  primary_calendar_years:
+    - 2024
+    - 2025
+    - 2026_YTD_to_2026-10-20
+  quantitative_claim_gate: unique_original_article_corpus_required
+  fallback_if_bulk_retrieval_unavailable: verified_case_studies_and_historical_topic_baseline_only
