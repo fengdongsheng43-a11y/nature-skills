@@ -1,0 +1,89 @@
+name: WR PubMed self-contained coverage audit
+on:
+  push:
+    branches:
+      - feature/nature-journal-trends
+    paths:
+      - .github/workflows/wr-pubmed-selfcontained.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent:
+    if: github.repository == 'fengdongsheng43-a11y/nature-skills'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Re-fetch a separate OpenAlex snapshot, never overwrite frozen
+        id: census
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          CENSUS_END_DATE: '2026-10-21'
+        shell: bash
+        run: |
+          mkdir -p skills/nature-journal-trends/data/enrichment
+          set +e
+          python -u skills/nature-journal-trends/scripts/run_census.py > skills/nature-journal-trends/data/enrichment/OPENALEX_RUN_LOG.txt 2>&1
+          ret=$?
+          tail -n 20 skills/nature-journal-trends/data/enrichment/OPENALEX_RUN_LOG.txt
+          exit $ret
+      - name: PubMed DOI metadata rescue on separate snapshot
+        id: pubmed
+        if: steps.census.outcome == 'success'
+        run: |
+          set +e
+          python -u skills/nature-journal-trends/scripts/enrich_pubmed_wr.py > skills/nature-journal-trends/data/enrichment/PUBMED_RUN_LOG.txt 2>&1
+          ret=$?
+          tail -n 35 skills/nature-journal-trends/data/enrichment/PUBMED_RUN_LOG.txt
+          exit $ret
+      - name: Record independent run status
+        if: always()
+        env:
+          CENSUS_OUTCOME: ${{ steps.census.outcome }}
+          PUBMED_OUTCOME: ${{ steps.pubmed.outcome }}
+          SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import datetime,json,os,pathlib
+          d=pathlib.Path('skills/nature-journal-trends/data/enrichment')
+          d.mkdir(parents=True,exist_ok=True)
+          p=pathlib.Path('skills/nature-journal-trends/data/latest/COMPLETE.json')
+          census=json.loads(p.read_text()) if p.exists() else {}
+          z={'kind':'independent_new_snapshot','timestamp':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'github_sha':os.getenv('SHA'),'census_status':os.getenv('CENSUS_OUTCOME'),
+            'pubmed_status':os.getenv('PUBMED_OUTCOME'),'new_census_rows':census.get('total_records'),
+            'new_census_sha256':census.get('raw_records_sha256'),
+            'original_frozen_rows':12936,'original_frozen_sha256':'9fc682a90215596d04a05f2ef49b714448b6bb5403c4d2f068bef1284e7f8ca8',
+            'no_frozen_corpus_claim':True}
+          (d/'INDEPENDENT_STATUS.json').write_text(json.dumps(z,indent=2))
+          print(json.dumps(z,indent=2))
+          PY
+      - name: Archive DOI metadata and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wr-pubmed-independent-2026-10-21
+          path: skills/nature-journal-trends/data/enrichment/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Publish small DOI metadata and run manifest
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add skills/nature-journal-trends/data/enrichment/INDEPENDENT_STATUS.json
+          test ! -f skills/nature-journal-trends/data/enrichment/PUBMED_MANIFEST.json || git add skills/nature-journal-trends/data/enrichment/PUBMED_MANIFEST.json
+          test ! -f skills/nature-journal-trends/data/enrichment/wr_pubmed_doi_metadata.csv || git add skills/nature-journal-trends/data/enrichment/wr_pubmed_doi_metadata.csv
+          git diff --cached --quiet && exit 0
+          git commit -m "data: independently retrieved WR PubMed DOI audit [skip ci]"
+          for i in 1 2 3; do
+            git fetch origin feature/nature-journal-trends
+            git rebase origin/feature/nature-journal-trends
+            if git push origin HEAD:feature/nature-journal-trends; then exit 0; fi
+            sleep 3
+          done
+          exit 1
