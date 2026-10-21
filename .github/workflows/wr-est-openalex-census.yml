@@ -1,0 +1,46 @@
+name: WR-EST OpenAlex census (one-off)
+on:
+  push:
+    branches:
+      - feature/nature-journal-trends
+    paths:
+      - .github/workflows/wr-est-openalex-census.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  retrieve-analyze:
+    if: github.repository == 'fengdongsheng43-a11y/nature-skills'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch all indexed WR/EST papers and compute actual counts
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          CENSUS_END_DATE: '2026-10-21'
+        run: python skills/nature-journal-trends/scripts/run_census.py
+      - name: Archive paper-level index and numeric summaries
+        uses: actions/upload-artifact@v4
+        with:
+          name: wr-est-census-2026-10-21
+          path: skills/nature-journal-trends/data/latest/
+          retention-days: 30
+      - name: Commit verified summary tables only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add skills/nature-journal-trends/data/latest/corpus_audit.csv
+          git add skills/nature-journal-trends/data/latest/theme_counts.csv
+          git add skills/nature-journal-trends/data/latest/native_topic_counts.csv
+          git add skills/nature-journal-trends/data/latest/trend_comparisons.csv
+          git add skills/nature-journal-trends/data/latest/REPORT.md
+          git add skills/nature-journal-trends/data/latest/COMPLETE.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: store verified OpenAlex WR EST topic census [skip ci]"
+          git push origin HEAD:feature/nature-journal-trends
