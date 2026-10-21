@@ -215,8 +215,23 @@ def main():
        "limitations":"OpenAlex source-indexed corpus; original-research publisher verification and classification precision not established"}
     (OUT/"COMPLETE.json").write_text(json.dumps(marker,indent=2)+"\n",encoding="utf-8")
     print("CENSUS COMPLETE:",len(rows),json.dumps({k:marker[k] for k in ["status","raw_records_sha256"]}))
+def self_test():
+    assert doi("https://doi.org/10.1021/ACS.EST.1C12345")=="10.1021/acs.est.1c12345"
+    assert abstract({"Environmental":[0],"science":[1]})=="Environmental science"
+    assert article_class({"type":"review","title":"Nutrients in wastewater"})=="review"
+    assert article_class({"type":"article","title":"A systematic review of PFAS"})=="suspect_review"
+    assert article_class({"type":"article","title":"PFAS fate in water"})=="article_proxy"
+    assert RX["PFAS"].search("PFAS fate in water")
+    assert RX["Biological nitrogen"].search("cold nitrous oxide")
+    assert ym_day(dt.date(2024,10,20))==ym_day(dt.date(2026,10,20))
+    assert cut(2024)==dt.date(2024,12,31)
+    print("PASS: local parsing, theme, type, date tests (does NOT verify network/API)")
+
 if __name__=="__main__":
-    try:main()
-    except Exception as e:
-        print("CENSUS INCOMPLETE; do not release trend conclusions:",repr(e),file=sys.stderr)
-        raise
+    if "--self-test" in sys.argv:
+        self_test()
+    else:
+        try:main()
+        except Exception as e:
+            print("CENSUS INCOMPLETE; do not release trend conclusions:",repr(e),file=sys.stderr)
+            raise
