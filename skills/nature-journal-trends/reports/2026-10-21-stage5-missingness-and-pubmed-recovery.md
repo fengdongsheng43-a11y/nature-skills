@@ -51,3 +51,9 @@ On the separate feature branch, changed workflow .github/workflows/wr-pubmed-qa.
 
 ## P0 next
 Recover abstract coverage and DOI-matched article types; stratify by journal/year/topic and original article status; adjudicate the 164 sample from accessible original abstracts/methods plus a random no-keyword sample; estimate topic-specific false positive/negative rates with sources and provenance; rerun trends and 2026 lag sensitivity. Avoid premature prioritization based on prevalence alone.
+
+## Independent fallback workflow (separate snapshot, not the frozen census)
+- Added `.github/workflows/wr-pubmed-selfcontained.yml` on the same development branch; combines a fresh OpenAlex census with PubMed DOI cross-check in **one** Actions job, eliminating cross-run artifact dependency.
+- Fresh retrieval is **not** assumed identical to run 39550517919. The workflow exports an INDEPENDENT_STATUS.json with new row count and raw-record hash alongside the old frozen row/hash, before any cross-snapshot comparison.
+- The new workflow file being present proves only deployment; DOI rescue is **not** complete until PUBMED_MANIFEST.json and row-linked DOI table exist and are checked. It does not retroactively repair the 2026-10-21 original corpus.
+- In type-suspect queue n=52, 45 titles contain 'synthesis' and 6 contain 'overview'. Those strings are often part of experimental research titles; they are risk flags, **not** basis for automatic deletion.
