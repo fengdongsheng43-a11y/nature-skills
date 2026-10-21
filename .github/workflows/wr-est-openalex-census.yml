@@ -5,6 +5,7 @@ on:
       - feature/nature-journal-trends
     paths:
       - .github/workflows/wr-est-openalex-census.yml
+      - skills/nature-journal-trends/scripts/run_census.py
   workflow_dispatch:
 permissions:
   contents: write
@@ -20,6 +21,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Preflight parsing and classification unit tests
+        run: python skills/nature-journal-trends/scripts/run_census.py --self-test
       - name: Fetch all indexed WR/EST papers and compute actual counts
         env:
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
