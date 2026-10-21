@@ -1,0 +1,97 @@
+﻿journal,earlier,later,window,theme,n_earlier,den_earlier,pct_earlier,n_later,den_later,pct_later,change_pp
+WR,2024,2025,full_year,PFAS,47,1711,2.747,47,1930,2.435,-0.312
+WR,2024,2025,full_year,Micro-nanoplastics,79,1711,4.617,109,1930,5.648,1.03
+WR,2024,2025,full_year,Antibiotics-AMR,126,1711,7.364,132,1930,6.839,-0.525
+WR,2024,2025,full_year,Biological nitrogen,158,1711,9.234,143,1930,7.409,-1.825
+WR,2024,2025,full_year,Phosphorus & eutrophication,117,1711,6.838,149,1930,7.72,0.882
+WR,2024,2025,full_year,Advanced oxidation,84,1711,4.909,113,1930,5.855,0.946
+WR,2024,2025,full_year,Adsorption-materials,106,1711,6.195,116,1930,6.01,-0.185
+WR,2024,2025,full_year,Membranes & desalination,167,1711,9.76,228,1930,11.813,2.053
+WR,2024,2025,full_year,Disinfection & DBPs,103,1711,6.02,94,1930,4.87,-1.149
+WR,2024,2025,full_year,Toxicity & exposure,88,1711,5.143,89,1930,4.611,-0.532
+WR,2024,2025,full_year,Atmosphere & aerosols,21,1711,1.227,23,1930,1.192,-0.036
+WR,2024,2025,full_year,"Soils, aquifers, remediation",103,1711,6.02,97,1930,5.026,-0.994
+WR,2024,2025,full_year,GHG & climate,110,1711,6.429,121,1930,6.269,-0.16
+WR,2024,2025,full_year,Microbiome & omics,114,1711,6.663,129,1930,6.684,0.021
+WR,2024,2025,full_year,AI & modelling,77,1711,4.5,103,1930,5.337,0.836
+WR,2024,2025,full_year,Resource recovery,29,1711,1.695,39,1930,2.021,0.326
+WR,2025,2026,matched_ytd,PFAS,37,1537,2.407,45,1622,2.774,0.367
+WR,2025,2026,matched_ytd,Micro-nanoplastics,80,1537,5.205,79,1622,4.871,-0.334
+WR,2025,2026,matched_ytd,Antibiotics-AMR,114,1537,7.417,97,1622,5.98,-1.437
+WR,2025,2026,matched_ytd,Biological nitrogen,116,1537,7.547,147,1622,9.063,1.516
+WR,2025,2026,matched_ytd,Phosphorus & eutrophication,122,1537,7.938,127,1622,7.83,-0.108
+WR,2025,2026,matched_ytd,Advanced oxidation,94,1537,6.116,90,1622,5.549,-0.567
+WR,2025,2026,matched_ytd,Adsorption-materials,95,1537,6.181,78,1622,4.809,-1.372
+WR,2025,2026,matched_ytd,Membranes & desalination,196,1537,12.752,141,1622,8.693,-4.059
+WR,2025,2026,matched_ytd,Disinfection & DBPs,70,1537,4.554,77,1622,4.747,0.193
+WR,2025,2026,matched_ytd,Toxicity & exposure,72,1537,4.684,77,1622,4.747,0.063
+WR,2025,2026,matched_ytd,Atmosphere & aerosols,17,1537,1.106,17,1622,1.048,-0.058
+WR,2025,2026,matched_ytd,"Soils, aquifers, remediation",79,1537,5.14,90,1622,5.549,0.409
+WR,2025,2026,matched_ytd,GHG & climate,99,1537,6.441,82,1622,5.055,-1.386
+WR,2025,2026,matched_ytd,Microbiome & omics,107,1537,6.962,83,1622,5.117,-1.844
+WR,2025,2026,matched_ytd,AI & modelling,79,1537,5.14,129,1622,7.953,2.813
+WR,2025,2026,matched_ytd,Resource recovery,30,1537,1.952,27,1622,1.665,-0.287
+WR,2024,2026,matched_ytd,PFAS,33,1367,2.414,45,1622,2.774,0.36
+WR,2024,2026,matched_ytd,Micro-nanoplastics,61,1367,4.462,79,1622,4.871,0.408
+WR,2024,2026,matched_ytd,Antibiotics-AMR,104,1367,7.608,97,1622,5.98,-1.628
+WR,2024,2026,matched_ytd,Biological nitrogen,125,1367,9.144,147,1622,9.063,-0.081
+WR,2024,2026,matched_ytd,Phosphorus & eutrophication,92,1367,6.73,127,1622,7.83,1.1
+WR,2024,2026,matched_ytd,Advanced oxidation,64,1367,4.682,90,1622,5.549,0.867
+WR,2024,2026,matched_ytd,Adsorption-materials,78,1367,5.706,78,1622,4.809,-0.897
+WR,2024,2026,matched_ytd,Membranes & desalination,128,1367,9.364,141,1622,8.693,-0.671
+WR,2024,2026,matched_ytd,Disinfection & DBPs,82,1367,5.999,77,1622,4.747,-1.251
+WR,2024,2026,matched_ytd,Toxicity & exposure,72,1367,5.267,77,1622,4.747,-0.52
+WR,2024,2026,matched_ytd,Atmosphere & aerosols,20,1367,1.463,17,1622,1.048,-0.415
+WR,2024,2026,matched_ytd,"Soils, aquifers, remediation",79,1367,5.779,90,1622,5.549,-0.23
+WR,2024,2026,matched_ytd,GHG & climate,85,1367,6.218,82,1622,5.055,-1.163
+WR,2024,2026,matched_ytd,Microbiome & omics,94,1367,6.876,83,1622,5.117,-1.759
+WR,2024,2026,matched_ytd,AI & modelling,56,1367,4.097,129,1622,7.953,3.857
+WR,2024,2026,matched_ytd,Resource recovery,19,1367,1.39,27,1622,1.665,0.275
+EST,2024,2025,full_year,PFAS,133,2002,6.643,195,2400,8.125,1.482
+EST,2024,2025,full_year,Micro-nanoplastics,116,2002,5.794,171,2400,7.125,1.331
+EST,2024,2025,full_year,Antibiotics-AMR,96,2002,4.795,136,2400,5.667,0.871
+EST,2024,2025,full_year,Biological nitrogen,79,2002,3.946,74,2400,3.083,-0.863
+EST,2024,2025,full_year,Phosphorus & eutrophication,148,2002,7.393,178,2400,7.417,0.024
+EST,2024,2025,full_year,Advanced oxidation,89,2002,4.446,130,2400,5.417,0.971
+EST,2024,2025,full_year,Adsorption-materials,188,2002,9.391,220,2400,9.167,-0.224
+EST,2024,2025,full_year,Membranes & desalination,127,2002,6.344,177,2400,7.375,1.031
+EST,2024,2025,full_year,Disinfection & DBPs,130,2002,6.494,174,2400,7.25,0.756
+EST,2024,2025,full_year,Toxicity & exposure,375,2002,18.731,520,2400,21.667,2.935
+EST,2024,2025,full_year,Atmosphere & aerosols,374,2002,18.681,413,2400,17.208,-1.473
+EST,2024,2025,full_year,"Soils, aquifers, remediation",109,2002,5.445,134,2400,5.583,0.139
+EST,2024,2025,full_year,GHG & climate,260,2002,12.987,340,2400,14.167,1.18
+EST,2024,2025,full_year,Microbiome & omics,118,2002,5.894,154,2400,6.417,0.523
+EST,2024,2025,full_year,AI & modelling,107,2002,5.345,156,2400,6.5,1.155
+EST,2024,2025,full_year,Resource recovery,34,2002,1.698,55,2400,2.292,0.593
+EST,2025,2026,matched_ytd,PFAS,153,1904,8.036,176,2368,7.432,-0.603
+EST,2025,2026,matched_ytd,Micro-nanoplastics,140,1904,7.353,154,2368,6.503,-0.85
+EST,2025,2026,matched_ytd,Antibiotics-AMR,112,1904,5.882,102,2368,4.307,-1.575
+EST,2025,2026,matched_ytd,Biological nitrogen,63,1904,3.309,89,2368,3.758,0.45
+EST,2025,2026,matched_ytd,Phosphorus & eutrophication,148,1904,7.773,158,2368,6.672,-1.101
+EST,2025,2026,matched_ytd,Advanced oxidation,112,1904,5.882,120,2368,5.068,-0.815
+EST,2025,2026,matched_ytd,Adsorption-materials,176,1904,9.244,213,2368,8.995,-0.249
+EST,2025,2026,matched_ytd,Membranes & desalination,144,1904,7.563,151,2368,6.377,-1.186
+EST,2025,2026,matched_ytd,Disinfection & DBPs,138,1904,7.248,113,2368,4.772,-2.476
+EST,2025,2026,matched_ytd,Toxicity & exposure,422,1904,22.164,522,2368,22.044,-0.12
+EST,2025,2026,matched_ytd,Atmosphere & aerosols,324,1904,17.017,463,2368,19.552,2.536
+EST,2025,2026,matched_ytd,"Soils, aquifers, remediation",114,1904,5.987,143,2368,6.039,0.051
+EST,2025,2026,matched_ytd,GHG & climate,256,1904,13.445,336,2368,14.189,0.744
+EST,2025,2026,matched_ytd,Microbiome & omics,122,1904,6.408,173,2368,7.306,0.898
+EST,2025,2026,matched_ytd,AI & modelling,125,1904,6.565,183,2368,7.728,1.163
+EST,2025,2026,matched_ytd,Resource recovery,44,1904,2.311,74,2368,3.125,0.814
+EST,2024,2026,matched_ytd,PFAS,106,1633,6.491,176,2368,7.432,0.941
+EST,2024,2026,matched_ytd,Micro-nanoplastics,96,1633,5.879,154,2368,6.503,0.625
+EST,2024,2026,matched_ytd,Antibiotics-AMR,80,1633,4.899,102,2368,4.307,-0.592
+EST,2024,2026,matched_ytd,Biological nitrogen,66,1633,4.042,89,2368,3.758,-0.283
+EST,2024,2026,matched_ytd,Phosphorus & eutrophication,125,1633,7.655,158,2368,6.672,-0.982
+EST,2024,2026,matched_ytd,Advanced oxidation,80,1633,4.899,120,2368,5.068,0.169
+EST,2024,2026,matched_ytd,Adsorption-materials,154,1633,9.43,213,2368,8.995,-0.436
+EST,2024,2026,matched_ytd,Membranes & desalination,106,1633,6.491,151,2368,6.377,-0.114
+EST,2024,2026,matched_ytd,Disinfection & DBPs,104,1633,6.369,113,2368,4.772,-1.597
+EST,2024,2026,matched_ytd,Toxicity & exposure,305,1633,18.677,522,2368,22.044,3.367
+EST,2024,2026,matched_ytd,Atmosphere & aerosols,299,1633,18.31,463,2368,19.552,1.243
+EST,2024,2026,matched_ytd,"Soils, aquifers, remediation",86,1633,5.266,143,2368,6.039,0.772
+EST,2024,2026,matched_ytd,GHG & climate,213,1633,13.043,336,2368,14.189,1.146
+EST,2024,2026,matched_ytd,Microbiome & omics,101,1633,6.185,173,2368,7.306,1.121
+EST,2024,2026,matched_ytd,AI & modelling,80,1633,4.899,183,2368,7.728,2.829
+EST,2024,2026,matched_ytd,Resource recovery,25,1633,1.531,74,2368,3.125,1.594

@@ -1,0 +1,14 @@
+{
+  "status": "INDEXED_CORPUS_ACQUIRED",
+  "journal_sources": {
+    "WR": "S52566953",
+    "EST": "S13479253"
+  },
+  "start": "2024-01-01",
+  "end": "2026-10-21",
+  "retrieved_utc": "2026-10-21T09:20:00.840670+00:00",
+  "total_records": 12936,
+  "raw_records_sha256": "9fc682a90215596d04a05f2ef49b714448b6bb5403c4d2f068bef1284e7f8ca8",
+  "qa": "All API page counts matched; record source/year validated; DOI/ID duplicates checked",
+  "limitations": "OpenAlex source-indexed corpus; original-research publisher verification and classification precision not established"
+}

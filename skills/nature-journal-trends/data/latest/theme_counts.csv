@@ -1,0 +1,97 @@
+﻿journal,year,theme,n,denominator,share_pct,title_only_n
+WR,2024,PFAS,47,1711,2.747,42
+WR,2024,Micro-nanoplastics,79,1711,4.617,75
+WR,2024,Antibiotics-AMR,126,1711,7.364,107
+WR,2024,Biological nitrogen,158,1711,9.234,139
+WR,2024,Phosphorus & eutrophication,117,1711,6.838,86
+WR,2024,Advanced oxidation,84,1711,4.909,76
+WR,2024,Adsorption-materials,106,1711,6.195,90
+WR,2024,Membranes & desalination,167,1711,9.76,150
+WR,2024,Disinfection & DBPs,103,1711,6.02,80
+WR,2024,Toxicity & exposure,88,1711,5.143,64
+WR,2024,Atmosphere & aerosols,21,1711,1.227,13
+WR,2024,"Soils, aquifers, remediation",103,1711,6.02,77
+WR,2024,GHG & climate,110,1711,6.429,72
+WR,2024,Microbiome & omics,114,1711,6.663,76
+WR,2024,AI & modelling,77,1711,4.5,64
+WR,2024,Resource recovery,29,1711,1.695,14
+WR,2025,PFAS,47,1930,2.435,42
+WR,2025,Micro-nanoplastics,109,1930,5.648,107
+WR,2025,Antibiotics-AMR,132,1930,6.839,108
+WR,2025,Biological nitrogen,143,1930,7.409,125
+WR,2025,Phosphorus & eutrophication,149,1930,7.72,123
+WR,2025,Advanced oxidation,113,1930,5.855,102
+WR,2025,Adsorption-materials,116,1930,6.01,93
+WR,2025,Membranes & desalination,228,1930,11.813,203
+WR,2025,Disinfection & DBPs,94,1930,4.87,82
+WR,2025,Toxicity & exposure,89,1930,4.611,57
+WR,2025,Atmosphere & aerosols,23,1930,1.192,16
+WR,2025,"Soils, aquifers, remediation",97,1930,5.026,82
+WR,2025,GHG & climate,121,1930,6.269,89
+WR,2025,Microbiome & omics,129,1930,6.684,76
+WR,2025,AI & modelling,103,1930,5.337,82
+WR,2025,Resource recovery,39,1930,2.021,27
+WR,2026,PFAS,45,1622,2.774,41
+WR,2026,Micro-nanoplastics,79,1622,4.871,76
+WR,2026,Antibiotics-AMR,97,1622,5.98,84
+WR,2026,Biological nitrogen,147,1622,9.063,135
+WR,2026,Phosphorus & eutrophication,127,1622,7.83,104
+WR,2026,Advanced oxidation,90,1622,5.549,81
+WR,2026,Adsorption-materials,78,1622,4.809,59
+WR,2026,Membranes & desalination,141,1622,8.693,129
+WR,2026,Disinfection & DBPs,77,1622,4.747,70
+WR,2026,Toxicity & exposure,77,1622,4.747,56
+WR,2026,Atmosphere & aerosols,17,1622,1.048,8
+WR,2026,"Soils, aquifers, remediation",90,1622,5.549,72
+WR,2026,GHG & climate,82,1622,5.055,61
+WR,2026,Microbiome & omics,83,1622,5.117,53
+WR,2026,AI & modelling,129,1622,7.953,99
+WR,2026,Resource recovery,27,1622,1.665,16
+EST,2024,PFAS,133,2002,6.643,54
+EST,2024,Micro-nanoplastics,116,2002,5.794,100
+EST,2024,Antibiotics-AMR,96,2002,4.795,47
+EST,2024,Biological nitrogen,79,2002,3.946,48
+EST,2024,Phosphorus & eutrophication,148,2002,7.393,83
+EST,2024,Advanced oxidation,89,2002,4.446,43
+EST,2024,Adsorption-materials,188,2002,9.391,54
+EST,2024,Membranes & desalination,127,2002,6.344,66
+EST,2024,Disinfection & DBPs,130,2002,6.494,67
+EST,2024,Toxicity & exposure,375,2002,18.731,121
+EST,2024,Atmosphere & aerosols,374,2002,18.681,183
+EST,2024,"Soils, aquifers, remediation",109,2002,5.445,35
+EST,2024,GHG & climate,260,2002,12.987,103
+EST,2024,Microbiome & omics,118,2002,5.894,36
+EST,2024,AI & modelling,107,2002,5.345,61
+EST,2024,Resource recovery,34,2002,1.698,10
+EST,2025,PFAS,195,2400,8.125,101
+EST,2025,Micro-nanoplastics,171,2400,7.125,149
+EST,2025,Antibiotics-AMR,136,2400,5.667,75
+EST,2025,Biological nitrogen,74,2400,3.083,30
+EST,2025,Phosphorus & eutrophication,178,2400,7.417,77
+EST,2025,Advanced oxidation,130,2400,5.417,58
+EST,2025,Adsorption-materials,220,2400,9.167,59
+EST,2025,Membranes & desalination,177,2400,7.375,86
+EST,2025,Disinfection & DBPs,174,2400,7.25,82
+EST,2025,Toxicity & exposure,520,2400,21.667,155
+EST,2025,Atmosphere & aerosols,413,2400,17.208,167
+EST,2025,"Soils, aquifers, remediation",134,2400,5.583,41
+EST,2025,GHG & climate,340,2400,14.167,115
+EST,2025,Microbiome & omics,154,2400,6.417,38
+EST,2025,AI & modelling,156,2400,6.5,72
+EST,2025,Resource recovery,55,2400,2.292,20
+EST,2026,PFAS,176,2368,7.432,111
+EST,2026,Micro-nanoplastics,154,2368,6.503,132
+EST,2026,Antibiotics-AMR,102,2368,4.307,46
+EST,2026,Biological nitrogen,89,2368,3.758,43
+EST,2026,Phosphorus & eutrophication,158,2368,6.672,79
+EST,2026,Advanced oxidation,120,2368,5.068,56
+EST,2026,Adsorption-materials,213,2368,8.995,74
+EST,2026,Membranes & desalination,151,2368,6.377,74
+EST,2026,Disinfection & DBPs,113,2368,4.772,56
+EST,2026,Toxicity & exposure,522,2368,22.044,171
+EST,2026,Atmosphere & aerosols,463,2368,19.552,195
+EST,2026,"Soils, aquifers, remediation",143,2368,6.039,55
+EST,2026,GHG & climate,336,2368,14.189,120
+EST,2026,Microbiome & omics,173,2368,7.306,37
+EST,2026,AI & modelling,183,2368,7.728,82
+EST,2026,Resource recovery,74,2368,3.125,27

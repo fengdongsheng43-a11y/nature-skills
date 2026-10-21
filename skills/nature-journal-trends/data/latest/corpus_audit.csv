@@ -1,0 +1,7 @@
+﻿journal,year,api_count,downloaded,source,date_min,date_max,pages,article_proxy,same_cutoff_article_proxy,missing_abstract,missing_doi,missing_primary_topic,excluded_or_suspected,classification_warning
+WR,2024,1807,1807,S52566953,2024-01-01,2024-12-31,19,1711,1367,1326,0,0,96,article_proxy != publisher original research
+WR,2025,2021,2021,S52566953,2025-01-01,2025-12-31,21,1930,1537,1531,0,0,91,article_proxy != publisher original research
+WR,2026,1715,1715,S52566953,2026-01-01,2026-10-21,18,1622,1622,1340,0,0,93,article_proxy != publisher original research
+EST,2024,2207,2207,S13479253,2024-01-01,2024-12-31,23,2002,1633,14,0,3,205,article_proxy != publisher original research
+EST,2025,2616,2616,S13479253,2025-01-01,2025-12-31,27,2400,1904,38,0,1,216,article_proxy != publisher original research
+EST,2026,2570,2570,S13479253,2026-01-01,2026-10-21,26,2368,2368,62,0,0,202,article_proxy != publisher original research
