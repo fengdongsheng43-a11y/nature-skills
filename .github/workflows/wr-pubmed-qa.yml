@@ -11,6 +11,7 @@ permissions:
   actions: read
 jobs:
   enrich:
+    if: github.repository == 'fengdongsheng43-a11y/nature-skills'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -19,33 +20,69 @@ jobs:
         with:
           python-version: '3.11'
       - name: Restore frozen OpenAlex corpus
+        id: restore
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p skills/nature-journal-trends/data/latest
           gh run download 39550517919 --name wr-est-census-2026-10-21 --dir skills/nature-journal-trends/data/latest
           test -s skills/nature-journal-trends/data/latest/paper_index.csv
-      - name: Cross-check Water Research abstracts and PubMed document types by DOI
-        run: python skills/nature-journal-trends/scripts/enrich_pubmed_wr.py
-      - name: Upload reproducible DOI audit, no bulk abstract redistribution
+          wc -l skills/nature-journal-trends/data/latest/paper_index.csv
+      - name: Cross-check Water Research via PubMed DOI
+        id: pubmed
+        if: steps.restore.outcome == 'success'
+        shell: bash
+        run: |
+          mkdir -p skills/nature-journal-trends/data/enrichment
+          set +e
+          python -u skills/nature-journal-trends/scripts/enrich_pubmed_wr.py > skills/nature-journal-trends/data/enrichment/RUN_LOG.txt 2>&1
+          result=$?
+          echo "code=$result" >> "$GITHUB_OUTPUT"
+          tail -n 35 skills/nature-journal-trends/data/enrichment/RUN_LOG.txt
+          exit $result
+      - name: Save diagnostics even on failure
+        if: always()
+        env:
+          RESTORE_OUTCOME: ${{ steps.restore.outcome }}
+          PUBMED_OUTCOME: ${{ steps.pubmed.outcome }}
+          GH_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json,os,datetime,pathlib
+          d=pathlib.Path('skills/nature-journal-trends/data/enrichment')
+          d.mkdir(parents=True,exist_ok=True)
+          log=d/'RUN_LOG.txt'
+          last=log.read_text(errors='replace').splitlines()[-15:] if log.exists() else ['No PubMed execution log']
+          manifest=d/'PUBMED_MANIFEST.json'
+          z={'workflow':'wr-pubmed-qa.yml','utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+             'github_sha':os.getenv('GH_SHA'),'restore_outcome':os.getenv('RESTORE_OUTCOME'),
+             'pubmed_outcome':os.getenv('PUBMED_OUTCOME'),'manifest_exists':manifest.exists(),
+             'diagnostic_tail':last}
+          (d/'WORKFLOW_STATUS.json').write_text(json.dumps(z,indent=2,ensure_ascii=False))
+          print(json.dumps(z,indent=2,ensure_ascii=False))
+          PY
+      - name: Archive diagnostics and metadata
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: wr-pubmed-doi-audit-2026-10-21
           path: skills/nature-journal-trends/data/enrichment/
+          if-no-files-found: error
           retention-days: 30
-      - name: Publish verified DOI metadata counts to development branch
+      - name: Publish DOI metadata or diagnostic status
+        if: always()
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          test -s skills/nature-journal-trends/data/enrichment/PUBMED_MANIFEST.json
-          git add skills/nature-journal-trends/data/enrichment/PUBMED_MANIFEST.json
-          git add skills/nature-journal-trends/data/enrichment/wr_pubmed_doi_metadata.csv
-          git commit -m "data: PubMed DOI source audit for WR [skip ci]"
+          git add skills/nature-journal-trends/data/enrichment/WORKFLOW_STATUS.json
+          test ! -f skills/nature-journal-trends/data/enrichment/PUBMED_MANIFEST.json || git add skills/nature-journal-trends/data/enrichment/PUBMED_MANIFEST.json
+          test ! -f skills/nature-journal-trends/data/enrichment/wr_pubmed_doi_metadata.csv || git add skills/nature-journal-trends/data/enrichment/wr_pubmed_doi_metadata.csv
+          git commit -m "data: WR PubMed DOI rescue and diagnostic result [skip ci]" || exit 0
           for attempt in 1 2 3; do
             git fetch origin feature/nature-journal-trends
             git rebase origin/feature/nature-journal-trends
             if git push origin HEAD:feature/nature-journal-trends; then exit 0; fi
-            sleep 3
+            sleep 4
           done
-          echo "Publication failed, but the archived QA artifact remains available."
           exit 1
