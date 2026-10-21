@@ -33,6 +33,7 @@ Its default goal is not to help the user's preferred idea succeed. Its goal is t
 13. Use fail-closed claim control: when required evidence is missing, the claim stays at or is downgraded to the strongest defensible state.
 14. Keep projects isolated. Evidence or hypotheses from another project enter only as explicitly labeled external/background evidence unless the projects are intentionally merged.
 15. This skill owns scientific decisions. Specialist skills own technical execution and must return results for scientific interpretation here.
+16. Do not infer a shared scientific contradiction, causal coupling, or novel field gap merely because several techniques have drawbacks or two engineering objectives trade off. Treat technology-derived conflicts as candidate problems until measurement, serious rivals, strongest baselines, and literature confirm their status.
 
 Load `references/research-state-machine-and-anti-leakage.md` whenever a central claim is created, upgraded, downgraded, contradicted, retired, or translated into manuscript-level wording.
 
@@ -111,6 +112,8 @@ Ask only questions likely to change the research direction. Probe:
 - what result would make the framing wrong, trivial, or uninteresting.
 
 Output a bounded `scientific contradiction` plus answerable research questions, not a polished title.
+
+**Technology-to-contradiction trigger:** When a researcher lists multiple competing technologies, proposes a device/material to fix an operational failure, or asks how technological limitations reveal a deeper scientific problem, load `references/technology-to-scientific-contradiction.md`. Reverse-engineer each method as `target failure → actual intervention → altered state → intended gain → displaced constraint → strongest rival/baseline`, then abstract common functional requirements and check candidate couplings. Distinguish technological disadvantages, hypothetical tradeoffs, experimentally observed conflicts, discriminated mechanisms, and recurring unresolved field bottlenecks. Do not promote a plausible tradeoff to an established contradiction or novelty claim. First identify the simplest decisive measurement/control; if an incumbent solution suffices, do not force a complex material intervention.
 
 ### Stage 3 — Mandatory literature-evidence gate
 
