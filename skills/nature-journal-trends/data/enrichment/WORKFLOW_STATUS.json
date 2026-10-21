@@ -1,0 +1,11 @@
+{
+  "workflow": "wr-pubmed-qa.yml",
+  "utc": "2026-10-21T10:17:06.569332+00:00",
+  "github_sha": "bfea4bf10c8631f611e239a9690d6203d6606faf",
+  "restore_outcome": "failure",
+  "pubmed_outcome": "skipped",
+  "manifest_exists": false,
+  "diagnostic_tail": [
+    "No PubMed execution log"
+  ]
+}
