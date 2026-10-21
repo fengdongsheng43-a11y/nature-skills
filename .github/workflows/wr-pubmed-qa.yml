@@ -7,7 +7,7 @@ on:
       - .github/workflows/wr-pubmed-qa.yml
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   actions: read
 jobs:
   enrich:
@@ -33,3 +33,19 @@ jobs:
           name: wr-pubmed-doi-audit-2026-10-21
           path: skills/nature-journal-trends/data/enrichment/
           retention-days: 30
+      - name: Publish verified DOI metadata counts to development branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          test -s skills/nature-journal-trends/data/enrichment/PUBMED_MANIFEST.json
+          git add skills/nature-journal-trends/data/enrichment/PUBMED_MANIFEST.json
+          git add skills/nature-journal-trends/data/enrichment/wr_pubmed_doi_metadata.csv
+          git commit -m "data: PubMed DOI source audit for WR [skip ci]"
+          for attempt in 1 2 3; do
+            git fetch origin feature/nature-journal-trends
+            git rebase origin/feature/nature-journal-trends
+            if git push origin HEAD:feature/nature-journal-trends; then exit 0; fi
+            sleep 3
+          done
+          echo "Publication failed, but the archived QA artifact remains available."
+          exit 1
