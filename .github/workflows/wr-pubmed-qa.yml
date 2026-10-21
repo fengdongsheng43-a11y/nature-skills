@@ -19,15 +19,27 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Restore frozen OpenAlex corpus
+      - name: Restore frozen OpenAlex corpus from earlier run
+        id: restore_artifact
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 39550517919
+          name: wr-est-census-2026-10-21
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: skills/nature-journal-trends/data/latest
+      - name: Verify snapshot row counts and integrity
         id: restore
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p skills/nature-journal-trends/data/latest
-          gh run download 39550517919 --name wr-est-census-2026-10-21 --dir skills/nature-journal-trends/data/latest
           test -s skills/nature-journal-trends/data/latest/paper_index.csv
-          wc -l skills/nature-journal-trends/data/latest/paper_index.csv
+          test -s skills/nature-journal-trends/data/latest/COMPLETE.json
+          python - <<'PY2'
+          import csv,json
+          p='skills/nature-journal-trends/data/latest/'
+          status=json.load(open(p+'COMPLETE.json'))
+          n=sum(1 for _ in csv.DictReader(open(p+'paper_index.csv',encoding='utf-8-sig')))
+          print('Frozen rows',n,'declared rows',status.get('total_records'))
+          assert n==12936 and n==status.get('total_records')
+          PY2
       - name: Cross-check Water Research via PubMed DOI
         id: pubmed
         if: steps.restore.outcome == 'success'
